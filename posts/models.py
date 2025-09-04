@@ -22,3 +22,4 @@ class Like(models.Model):
     def __str__(self):
         return f"{self.heroi.codinome} curtiu {self.post.id}"
 
+# Rian Prates
