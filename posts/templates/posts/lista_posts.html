@@ -1,25 +1,34 @@
 {% extends 'base.html' %}
-
-{% block title %}Lista de Posts{% endblock %}
-
 {% block content %}
-<h2 class="mb-4">Posts cadastrados</h2>
-
-<div class="row">
-{% for post in posts %}
-  <div class="col-md-4">
-    <div class="card mb-3">
-      <div class="card-body">
-        <h5 class="card-title">{{ post.autor }}</h5>
-        <p class="card-text">{{ post.mensagem }}</p>
-        <small class="text-muted">{{ post.criado_em }}</small>
-      </div>
-    </div>
-  </div>
-{% empty %}
-  <p>Nenhum post encontrado.</p>
-{% endfor %}
-</div>
+<!-- Tela de Listagem de Posts -->
+<main>
+  <header>
+    <h1>Lista de Posts</h1>
+    <p>Explore as publicações da nossa comunidade</p>
+  </header>
+  
+  <section aria-labelledby="posts-list">
+    <h2 id="posts-list" hidden>Posts Disponíveis</h2>
+    {% for post in posts %}
+      <article itemscope itemtype="http://schema.org/SocialMediaPosting">
+        <header>
+          <h3 itemprop="author">
+            <a href="{% url 'detalhes_post' post.pk %}" itemprop="url">{{ post.autor.codinome }}</a>
+          </h3>
+        </header>
+        
+        <p itemprop="text">{{ post.mensagem|linebreaksbr }}</p>
+        
+        <footer>
+          <nav>
+            <ul>
+              <li><a href="{% url 'editar_post' post.pk %}">✏️ Editar</a></li>
+              <li><a href="{% url 'excluir_post' post.pk %}">🗑️ Excluir</a></li>
+            </ul>
+          </nav>
+        </footer>
+      </article>
+    {% endfor %}
+  </section>
+</main>
 {% endblock %}
-
-<!-- Rian Prates -->

@@ -1,21 +1,50 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from .forms import PostForm
-from .models import Post  # importa o modelo
+from .models import Post
+from django.http import HttpResponse
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from comments.forms import CommentForm
+from comments.models import Comentario
 
-def criar_post(request):
+class PostListView(ListView):
+    model = Post
+    template_name = "posts/lista_posts.html"
+    context_object_name = "posts"
+
+class PostCreateView(CreateView):
+    model = Post
+    form_class = PostForm
+    template_name = 'posts/form_post.html'
+    success_url = reverse_lazy('lista_posts')
+
+class PostUpdateView(UpdateView):
+    model = Post
+    form_class = PostForm
+    template_name = 'posts/form_post.html'
+    success_url = reverse_lazy('lista_posts')
+
+class PostDeleteView(DeleteView):
+    model = Post
+    template_name = 'posts/confirmar_exclusao.html'
+    success_url = reverse_lazy('lista_posts')
+
+def detalhes_post(request, pk):
+    post = get_object_or_404(Post, id=pk)
+    comentarios = Comentario.objects.filter(post=post)
+
     if request.method == "POST":
-        form = PostForm(request.POST)
+        form = CommentForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('lista_posts')  # redireciona para a lista após salvar
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return redirect("detalhes_post", pk=post.pk)
     else:
-        form = PostForm()
+        form = CommentForm()
 
-    return render(request, "posts/form_post.html", {"form": form})
+    return render(request, "posts/detail_post.html", {"post": post, "form": form, "comentarios": comentarios})
 
 
-def lista_posts(request):
-    posts = Post.objects.all()
-    return render(request, "posts/lista_posts.html", {"posts": posts})
 
 #Rian Prates

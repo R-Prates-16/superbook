@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Tela de Detalhes do Post -->
+<article itemscope itemtype="http://schema.org/SocialMediaPosting">
+  <header>
+    <h1>Detalhes do Post</h1>
+  </header>
+  
+  <section aria-labelledby="post-content">
+    <h2 id="post-content" hidden>Conteúdo Original</h2>
+    <blockquote>
+      <header>
+        <h3 itemprop="author">{{ post.autor.codinome }}</h3>
+      </header>
+      <p itemprop="text">{{ post.mensagem|linebreaksbr }}</p>
+    </blockquote>
+  </section>
+  
+  <section aria-labelledby="comment-form">
+    <h2 id="comment-form">Deixe seu Comentário</h2>
+    <form method="POST">
+      {% csrf_token %}
+      <fieldset>
+        <legend>Formulário de Comentário</legend>
+        {% for field in form %}
+          <p>
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+              <mark>
+                {% for error in field.errors %}
+                  {{ error }}
+                {% endfor %}
+              </mark>
+            {% endif %}
+          </p>
+        {% endfor %}
+        <button type="submit">💬 Comentar</button>
+      </fieldset>
+    </form>
+  </section>
+  
+  <section aria-labelledby="comments-section">
+    <h2 id="comments-section">Comentários da Comunidade</h2>
+    {% for comentario in comentarios %}
+      <article>
+        <header>
+          <h4>{{ comentario.autor }}</h4>
+          <time datetime="{{ comentario.criado_em|date:'c' }}">{{ comentario.criado_em|date:"d/m/Y H:i" }}</time>
+        </header>
+        <p>{{ comentario.conteudo|linebreaksbr }}</p>
+      </article>
+    {% empty %}
+      <p>Nenhum comentário ainda. Seja o primeiro a comentar!</p>
+    {% endfor %}
+  </section>
+</article>
+{% endblock %}
+
+<!-- Rian Prates -->
