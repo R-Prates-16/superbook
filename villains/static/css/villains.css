@@ -1,0 +1,79 @@
+/* superbook/superbook/static/css/villains.css */
+.villain-theme {
+    background-color: #fee2e2;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.villain-title {
+    color: #dc2626 !important;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.villain-card {
+    border: 2px solid #fca5a5;
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.villain-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);
+}
+
+.villain-btn {
+    background-color: #dc2626;
+    border-color: #dc2626;
+    color: white;
+}
+
+.villain-btn:hover {
+    background-color: #b91c1c;
+    border-color: #b91c1c;
+    color: white;
+}
+
+.villain-badge-baixa {
+    background-color: #16a34a;
+    color: white;
+}
+
+.villain-badge-media {
+    background-color: #ca8a04;
+    color: white;
+}
+
+.villain-badge-alta {
+    background-color: #dc2626;
+    color: white;
+}
+
+.villain-badge-critica {
+    background-color: #000000;
+    color: white;
+}
+
+.villain-profile {
+    border: 3px solid #dc2626;
+    box-shadow: 0 4px 8px rgba(220, 38, 38, 0.3);
+}
+
+.villain-form {
+    background-color: #fef2f2;
+    border: 2px solid #fecaca;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.villain-form label {
+    color: #991b1b;
+    font-weight: 600;
+}
+
+.villain-danger {
+    background-color: #fef2f2;
+    border: 2px solid #fecaca;
+    border-radius: 12px;
+    padding: 20px;
+}

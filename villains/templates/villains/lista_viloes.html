@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/villains.css' %}">
+
+<div class="villain-theme">
+    <h1 class="villain-title mb-4 text-center">🏴‍☠️ Vilões</h1>
+    
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <a href="{% url 'novo_vilao' %}" class="btn villain-btn">
+            ➕ Novo Vilão
+        </a>
+        <span class="badge bg-dark">{{ viloes|length }} vilão(s) cadastrado(s)</span>
+    </div>
+
+    {% if viloes %}
+    <div class="row">
+        {% for vilao in viloes %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card villain-card h-100">
+                {% if vilao.imagem %}
+                <img src="{{ vilao.imagem.url }}" class="card-img-top" alt="{{ vilao.codinome }}" style="height: 250px; object-fit: cover;">
+                {% else %}
+                <div class="card-img-top d-flex align-items-center justify-content-center bg-dark text-white" style="height: 250px;">
+                    <i class="fas fa-skull-crossbones fa-3x"></i>
+                </div>
+                {% endif %}
+                
+                <div class="card-body">
+                    <h5 class="card-title">{{ vilao.codinome }}</h5>
+                    <p class="card-text">
+                        <strong>🏙️ Cidade:</strong> {{ vilao.cidade }}<br>
+                        <strong>⚡ Poder:</strong> {{ vilao.poder_principal }}<br>
+                        <strong>⚠️ Ameaça:</strong> 
+                        <span class="badge 
+                            {% if vilao.nivel_ameaca == 'baixa' %}villain-badge-baixa
+                            {% elif vilao.nivel_ameaca == 'media' %}villain-badge-media
+                            {% elif vilao.nivel_ameaca == 'alta' %}villain-badge-alta
+                            {% else %}villain-badge-critica{% endif %}">
+                            {{ vilao.get_nivel_ameaca_display }}
+                        </span>
+                    </p>
+                </div>
+                
+                <div class="card-footer bg-transparent">
+                    <div class="d-flex gap-2">
+                        <a href="{% url 'detalhe_vilao' vilao.pk %}" class="btn btn-sm btn-outline-dark flex-fill">
+                            👁️ Detalhes
+                        </a>
+                        <a href="{% url 'editar_vilao' vilao.pk %}" class="btn btn-sm btn-outline-primary flex-fill">
+                            ✏️ Editar
+                        </a>
+                        <a href="{% url 'excluir_vilao' vilao.pk %}" class="btn btn-sm btn-outline-danger flex-fill">
+                            🗑️ Excluir
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-5">
+        <i class="fas fa-ghost fa-3x text-muted mb-3"></i>
+        <h4 class="text-muted">Nenhum vilão cadastrado</h4>
+        <p class="text-muted">Comece adicionando o primeiro vilão!</p>
+        <a href="{% url 'novo_vilao' %}" class="btn villain-btn mt-2">
+            ➕ Adicionar Primeiro Vilão
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/villains.css' %}">
+
+<div class="villain-theme">
+    <div class="villain-danger">
+        <h1 class="villain-title mb-4">🗑️ Excluir Vilão</h1>
+        
+        <div class="alert alert-danger">
+            <h4 class="alert-heading">⚠️ Atenção!</h4>
+            <p>Você está prestes a excluir o vilão <strong>"{{ vilao.codinome }}"</strong>. Esta ação não pode ser desfeita.</p>
+            <hr>
+            <p class="mb-0">Tem certeza que deseja continuar?</p>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5>Informações do Vilão:</h5>
+                <p><strong>Codinome:</strong> {{ vilao.codinome }}</p>
+                <p><strong>Nome Real:</strong> {{ vilao.nome_real|default:"Desconhecido" }}</p>
+                <p><strong>Cidade:</strong> {{ vilao.cidade }}</p>
+                <p><strong>Poder Principal:</strong> {{ vilao.poder_principal }}</p>
+                <p><strong>Nível de Ameaça:</strong> {{ vilao.get_nivel_ameaca_display }}</p>
+            </div>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-danger">
+                    ✅ Sim, Excluir Vilão
+                </button>
+                <a href="{% url 'detalhe_vilao' vilao.pk %}" class="btn btn-outline-secondary">
+                    ❌ Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

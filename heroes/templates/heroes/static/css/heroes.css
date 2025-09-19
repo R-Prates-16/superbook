@@ -1,0 +1,57 @@
+/* superbook/superbook/static/css/heroes.css */
+.hero-theme {
+    background-color: #e6f2ff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.hero-title {
+    color: #1a56db !important;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.hero-card {
+    border: 2px solid #93c5fd;
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+.hero-btn {
+    background-color: #2563eb;
+    border-color: #2563eb;
+    color: white;
+}
+
+.hero-btn:hover {
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
+    color: white;
+}
+
+.hero-badge {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.hero-profile {
+    border: 3px solid #3b82f6;
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+.hero-form {
+    background-color: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.hero-form label {
+    color: #1e40af;
+    font-weight: 600;
+}

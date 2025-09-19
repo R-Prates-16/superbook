@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/villains.css' %}">
+
+<div class="villain-theme">
+    <h1 class="villain-title mb-4">✏️ Editar Vilão: {{ form.instance.codinome }}</h1>
+    
+    <div class="villain-form">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="{{ form.codinome.id_for_label }}" class="form-label">Codinome *</label>
+                        {{ form.codinome }}
+                        {% if form.codinome.errors %}
+                        <div class="text-danger">{{ form.codinome.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="{{ form.nome_real.id_for_label }}" class="form-label">Nome Real</label>
+                        {{ form.nome_real }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="{{ form.poder_principal.id_for_label }}" class="form-label">Poder Principal *</label>
+                        {{ form.poder_principal }}
+                        {% if form.poder_principal.errors %}
+                        <div class="text-danger">{{ form.poder_principal.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="{{ form.cidade.id_for_label }}" class="form-label">Cidade *</label>
+                        {{ form.cidade }}
+                        {% if form.cidade.errors %}
+                        <div class="text-danger">{{ form.cidade.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="{{ form.nivel_ameaca.id_for_label }}" class="form-label">Nível de Ameaça</label>
+                        {{ form.nivel_ameaca }}
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="{{ form.imagem.id_for_label }}" class="form-label">Imagem</label>
+                        {{ form.imagem }}
+                        {% if form.instance.imagem %}
+                        <div class="mt-2">
+                            <small>Imagem atual:</small>
+                            <img src="{{ form.instance.imagem.url }}" class="img-thumbnail mt-1" style="max-height: 100px;">
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="{{ form.historia.id_for_label }}" class="form-label">História *</label>
+                {{ form.historia }}
+                {% if form.historia.errors %}
+                <div class="text-danger">{{ form.historia.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn villain-btn">
+                    💾 Atualizar Vilão
+                </button>
+                <a href="{% url 'detalhe_vilao' form.instance.pk %}" class="btn btn-outline-dark">
+                    ↩️ Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

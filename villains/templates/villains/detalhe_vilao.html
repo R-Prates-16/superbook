@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/villains.css' %}">
+
+<div class="villain-theme">
+    <div class="row">
+        <div class="col-md-4">
+            {% if vilao.imagem %}
+            <img src="{{ vilao.imagem.url }}" class="img-fluid villain-profile rounded" alt="{{ vilao.codinome }}">
+            {% else %}
+            <div class="d-flex align-items-center justify-content-center bg-dark text-white rounded" style="height: 300px;">
+                <i class="fas fa-skull-crossbones fa-5x"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="col-md-8">
+            <h1 class="villain-title">{{ vilao.codinome }}</h1>
+            
+            <div class="mb-3">
+                <span class="badge 
+                    {% if vilao.nivel_ameaca == 'baixa' %}villain-badge-baixa
+                    {% elif vilao.nivel_ameaca == 'media' %}villain-badge-media
+                    {% elif vilao.nivel_ameaca == 'alta' %}villain-badge-alta
+                    {% else %}villain-badge-critica{% endif %} fs-6">
+                    Nível: {{ vilao.get_nivel_ameaca_display }}
+                </span>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <strong>👤 Nome Real:</strong> {{ vilao.nome_real|default:"Desconhecido" }}
+                </div>
+                <div class="col-md-6">
+                    <strong>🏙️ Cidade:</strong> {{ vilao.cidade }}
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <strong>⚡ Poder Principal:</strong> {{ vilao.poder_principal }}
+            </div>
+
+            <div class="mb-4">
+                <strong>📖 História:</strong>
+                <p class="mt-2">{{ vilao.historia|linebreaks }}</p>
+            </div>
+
+            <div class="d-flex gap-2">
+                <a href="{% url 'editar_vilao' vilao.pk %}" class="btn villain-btn">
+                    ✏️ Editar Vilão
+                </a>
+                <a href="{% url 'lista_viloes' %}" class="btn btn-outline-dark">
+                    ← Voltar para Lista
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
