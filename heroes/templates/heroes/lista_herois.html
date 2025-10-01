@@ -1,25 +1,68 @@
-{% extends 'base.html' %}
-
-{% block title %}Lista de Heróis{% endblock %}
+{% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-<h2 class="mb-4">Heróis cadastrados</h2>
+<link rel="stylesheet" href="{% static 'css/heroes.css' %}">
 
-<div class="row">
-{% for hero in herois %}
-  <div class="col-md-4">
-    <div class="card mb-3">
-      <div class="card-body">
-        <h5 class="card-title">{{ hero.codinome }}</h5>
-        <p class="card-text">{{ hero.poder_principal }}</p>
-        <small class="text-muted">{{ hero.cidade }}</small>
-      </div>
+<div class="villain-theme">
+    <h1 class="villain-title mb-4 text-center">🦸 Heróis</h1>
+    
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <a href="{% url 'criar_heroi' %}" class="btn villain-btn">
+            ➕ Novo Herói
+        </a>
+        <span class="badge bg-dark">{{ herois|length }} herói(s) cadastrado(s)</span>
     </div>
-  </div>
-{% empty %}
-  <p>Nenhum herói encontrado.</p>
-{% endfor %}
+
+    {% if herois %}
+    <div class="row">
+        {% for heroi in herois %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card villain-card h-100">
+                {% if heroi.imagem %}
+                <img src="{{ heroi.imagem.url }}" class="card-img-top" alt="{{ heroi.codinome }}" style="height: 250px; object-fit: cover;">
+                {% else %}
+                <div class="card-img-top d-flex align-items-center justify-content-center bg-dark text-white" style="height: 250px;">
+                    <i class="fas fa-shield-alt fa-3x"></i>
+                </div>
+                {% endif %}
+                
+                <div class="card-body">
+                    <h5 class="card-title">{{ heroi.codinome }}</h5>
+                    <p class="card-text">
+                        <strong>🏙️ Cidade:</strong> {{ heroi.cidade }}<br>
+                        <strong>⚡ Poder:</strong> {{ heroi.poder_principal }}<br>
+                        <strong>📧 Email:</strong> {{ heroi.email_contato|default:"Não informado" }}
+                    </p>
+                </div>
+                
+                <div class="card-footer bg-transparent">
+                    <div class="d-flex gap-2">
+                        <a href="{% url 'detalhe_heroi' heroi.pk %}" class="btn btn-sm btn-outline-dark flex-fill">
+                            👁️ Detalhes
+                        </a>
+                        <a href="{% url 'editar_heroi' heroi.pk %}" class="btn btn-sm btn-outline-primary flex-fill">
+                            ✏️ Editar
+                        </a>
+                        <a href="{% url 'excluir_heroi' heroi.pk %}" class="btn btn-sm btn-outline-danger flex-fill">
+                            🗑️ Excluir
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-5">
+        <i class="fas fa-user-plus fa-3x text-muted mb-3"></i>
+        <h4 class="text-muted">Nenhum herói cadastrado</h4>
+        <p class="text-muted">Comece adicionando o primeiro herói!</p>
+        <a href="{% url 'criar_heroi' %}" class="btn villain-btn mt-2">
+            ➕ Adicionar Primeiro Herói
+        </a>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}
-
 <!-- Rian Prates -->

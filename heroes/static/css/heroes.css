@@ -1,415 +1,180 @@
 /* superbook/superbook/static/css/heroes.css */
-/* Tema Heróis - Baseado no tema Vilões mas com cores azuis */
+/* TEMA HERÓIS - IDÊNTICO AO VILÕES MAS COM CORES AZUIS */
 
-.hero-theme {
-    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
-    padding: 30px;
-    border-radius: 15px;
-    margin-bottom: 30px;
-    border: 3px solid #7dd3fc;
+.villain-theme {
+    background-color: #e0f2fe !important;
+    padding: 20px;
+    border-radius: 10px;
 }
 
-.hero-title {
+.villain-title {
     color: #0369a1 !important;
-    font-weight: 800;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 25px;
-    font-size: 2.5rem;
-    text-align: center;
-}
-
-.hero-card {
-    border: 3px solid #38bdf8;
-    border-radius: 15px;
-    transition: all 0.3s ease;
-    background: white;
-    overflow: hidden;
-    box-shadow: 0 6px 20px rgba(14, 165, 233, 0.15);
-}
-
-.hero-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(14, 165, 233, 0.25);
-    border-color: #0ea5e9;
-}
-
-.hero-btn {
-    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-    border: none;
-    color: white;
     font-weight: 700;
-    padding: 12px 25px;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
-.hero-btn:hover {
-    background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
-    color: white;
+.villain-card {
+    border: 2px solid #38bdf8 !important;
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.villain-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(14, 165, 233, 0.3);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15);
 }
 
-/* Badges de nível (adaptação dos vilões) */
-.hero-badge-baixa {
-    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+.villain-btn {
+    background-color: #0284c7 !important;
+    border-color: #0284c7 !important;
     color: white;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 700;
 }
 
-.hero-badge-media {
-    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+.villain-btn:hover {
+    background-color: #0369a1 !important;
+    border-color: #0369a1 !important;
     color: white;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 700;
 }
 
-.hero-badge-alta {
-    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+.villain-badge-baixa {
+    background-color: #16a34a;
     color: white;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 700;
 }
 
-.hero-badge-critica {
-    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+.villain-badge-media {
+    background-color: #ca8a04;
     color: white;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 700;
 }
 
-.hero-profile {
-    border: 4px solid #0ea5e9;
-    box-shadow: 0 8px 25px rgba(14, 165, 233, 0.3);
-    border-radius: 15px;
-    transition: all 0.3s ease;
+.villain-badge-alta {
+    background-color: #dc2626;
+    color: white;
 }
 
-.hero-profile:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 30px rgba(14, 165, 233, 0.4);
+.villain-badge-critica {
+    background-color: #000000;
+    color: white;
 }
 
-.hero-form {
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-    border: 3px solid #bae6fd;
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 6px 20px rgba(14, 165, 233, 0.15);
+.villain-profile {
+    border: 3px solid #0284c7 !important;
+    box-shadow: 0 4px 8px rgba(14, 165, 233, 0.3);
 }
 
-.hero-form label {
-    color: #0369a1;
-    font-weight: 700;
-    margin-bottom: 8px;
-    font-size: 1.1rem;
-}
-
-.hero-form .form-control {
-    border: 2px solid #7dd3fc;
-    border-radius: 10px;
-    padding: 12px 15px;
-    transition: all 0.3s ease;
-    font-size: 1rem;
-}
-
-.hero-form .form-control:focus {
-    border-color: #0ea5e9;
-    box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15);
-    transform: translateY(-1px);
-}
-
-.hero-danger {
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-    border: 3px solid #bae6fd;
-    border-radius: 15px;
+.villain-form {
+    background-color: #f0f9ff !important;
+    border: 2px solid #bae6fd !important;
+    border-radius: 12px;
     padding: 25px;
-    box-shadow: 0 6px 20px rgba(14, 165, 233, 0.15);
 }
 
-.hero-card-img {
-    height: 280px;
-    object-fit: cover;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    transition: all 0.3s ease;
+.villain-form label {
+    color: #0369a1 !important;
+    font-weight: 600;
 }
 
-.hero-card:hover .hero-card-img {
-    transform: scale(1.05);
-}
-
-.hero-placeholder {
-    height: 280px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
-    color: white;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    transition: all 0.3s ease;
-}
-
-.hero-placeholder i {
-    font-size: 3.5rem;
-    transition: all 0.3s ease;
-}
-
-.hero-card:hover .hero-placeholder {
-    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-}
-
-.hero-card:hover .hero-placeholder i {
-    transform: scale(1.2);
-}
-
-.hero-info-box {
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-    border: 2px solid #bae6fd;
+.villain-danger {
+    background-color: #f0f9ff !important;
+    border: 2px solid #bae6fd !important;
     border-radius: 12px;
     padding: 20px;
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
 }
 
-.hero-info-box:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(14, 165, 233, 0.15);
+/* Ajustes específicos para heróis */
+.card-img-top.d-flex.align-items-center.justify-content-center.bg-dark.text-white {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
 }
 
-.hero-info-box strong {
-    color: #0369a1;
-    font-weight: 700;
+.d-flex.align-items-center.justify-content-center.bg-dark.text-white.rounded {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
 }
 
-.hero-action-buttons {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    justify-content: center;
+.alert-danger {
+    background-color: #fef2f2;
+    border-color: #fecaca;
+    color: #991b1b;
 }
 
-.hero-action-buttons .btn {
-    flex: 1;
-    min-width: 140px;
-    text-align: center;
-    padding: 10px 15px;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: all 0.3s ease;
+.alert-danger .alert-heading {
+    color: #dc2626;
 }
 
-.hero-action-buttons .btn-outline-primary {
-    border: 2px solid #0ea5e9;
-    color: #0ea5e9;
-}
-
-.hero-action-buttons .btn-outline-primary:hover {
-    background: #0ea5e9;
-    color: white;
-    transform: translateY(-2px);
-}
-
-.hero-action-buttons .btn-outline-secondary {
-    border: 2px solid #64748b;
-    color: #64748b;
-}
-
-.hero-action-buttons .btn-outline-secondary:hover {
-    background: #64748b;
-    color: white;
-    transform: translateY(-2px);
-}
-
-.hero-action-buttons .btn-outline-danger {
-    border: 2px solid #ef4444;
-    color: #ef4444;
-}
-
-.hero-action-buttons .btn-outline-danger:hover {
-    background: #ef4444;
-    color: white;
-    transform: translateY(-2px);
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .hero-theme {
-        padding: 20px 15px;
-        margin: 15px 10px;
-        border-radius: 12px;
-    }
-    
-    .hero-title {
-        font-size: 2rem;
-        margin-bottom: 20px;
-    }
-    
-    .hero-form {
-        padding: 20px 15px;
-        border-radius: 12px;
-    }
-    
-    .hero-card {
-        margin-bottom: 20px;
-        border-radius: 12px;
-    }
-    
-    .hero-action-buttons {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .hero-action-buttons .btn {
-        width: 100%;
-        min-width: auto;
-    }
-    
-    .hero-card-img,
-    .hero-placeholder {
-        height: 220px;
-    }
-    
-    .hero-info-box {
-        padding: 15px;
-        margin-bottom: 15px;
-    }
-}
-
-@media (max-width: 576px) {
-    .hero-title {
-        font-size: 1.8rem;
-    }
-    
-    .hero-btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
-    
-    .hero-form .form-control {
-        padding: 10px 12px;
-    }
-}
-
-/* Animações */
-@keyframes heroPulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
-@keyframes heroFloat {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-5px); }
-    100% { transform: translateY(0px); }
-}
-
-.hero-card {
-    animation: heroPulse 0.6s ease-in-out;
-}
-
-.hero-btn {
-    animation: heroFloat 2s ease-in-out infinite;
-}
-
-/* Efeitos especiais */
-.hero-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, transparent 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 15px;
-    z-index: 1;
-}
-
-.hero-card:hover::before {
-    opacity: 1;
-}
-
-/* Ícones específicos para heróis */
-.hero-icon {
-    color: #0ea5e9;
-    transition: all 0.3s ease;
-}
-
-.hero-card:hover .hero-icon {
+.btn-outline-primary {
+    border-color: #0284c7;
     color: #0284c7;
-    transform: scale(1.2);
 }
 
-/* Status badges para heróis */
-.hero-status-active {
-    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+.btn-outline-primary:hover {
+    background-color: #0284c7;
+    border-color: #0284c7;
     color: white;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 700;
 }
 
-.hero-status-inactive {
-    background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+.btn-outline-secondary {
+    border-color: #6b7280;
+    color: #6b7280;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #6b7280;
+    border-color: #6b7280;
     color: white;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 700;
 }
 
-.hero-status-mission {
-    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+.btn-outline-danger {
+    border-color: #dc2626;
+    color: #dc2626;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc2626;
+    border-color: #dc2626;
     color: white;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 700;
 }
 
-/* Loading states */
-.hero-loading {
-    background: linear-gradient(90deg, #f0f9ff 25%, #e0f2fe 50%, #f0f9ff 75%);
-    background-size: 200% 100%;
-    animation: loading 1.5s infinite;
+.badge.bg-dark {
+    background-color: #0369a1 !important;
 }
 
-@keyframes loading {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
+.text-muted {
+    color: #64748b !important;
 }
 
-/* Custom scrollbar */
-.hero-scroll::-webkit-scrollbar {
-    width: 8px;
+/* Garantir que todos os elementos tenham a mesma aparência */
+.villain-theme,
+.villain-title,
+.villain-card,
+.villain-btn,
+.villain-profile,
+.villain-form,
+.villain-danger {
+    /* Forçar a mesma aparência visual */
+    font-family: inherit;
+    line-height: inherit;
+    box-sizing: border-box;
 }
 
-.hero-scroll::-webkit-scrollbar-track {
-    background: #f0f9ff;
-    border-radius: 4px;
+/* Manter a mesma estrutura de espaçamento */
+.villain-theme {
+    margin-bottom: 20px;
 }
 
-.hero-scroll::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
-    border-radius: 4px;
+.villain-card {
+    margin-bottom: 15px;
 }
 
-.hero-scroll::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+.villain-form .mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+/* Responsividade igual */
+@media (max-width: 768px) {
+    .villain-theme {
+        padding: 15px;
+        margin: 10px;
+    }
+    
+    .villain-form {
+        padding: 20px;
+    }
 }

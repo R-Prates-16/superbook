@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title mb-4">✏️ Editar Post</h2>
+            
+            <form method="POST">
+                {% csrf_token %}
+                
+                <div class="mb-3">
+                    <label for="id_autor" class="form-label">Herói</label>
+                    {{ form.autor }}
+                </div>
+                
+                <div class="mb-3">
+                    <label for="id_mensagem" class="form-label">Mensagem</label>
+                    {{ form.mensagem }}
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">
+                        💾 Atualizar Post
+                    </button>
+                    <a href="{% url 'detalhe_post' object.pk %}" class="btn btn-secondary">
+                        ↩️ Cancelar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

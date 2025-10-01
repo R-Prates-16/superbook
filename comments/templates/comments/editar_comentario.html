@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title mb-4">✏️ Editar Comentário</h2>
+            
+            <form method="POST">
+                {% csrf_token %}
+                
+                <div class="mb-3">
+                    <label for="id_conteudo" class="form-label">Comentário</label>
+                    <textarea name="conteudo" id="id_conteudo" rows="3" class="form-control">{{ form.conteudo.value }}</textarea>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">
+                        💾 Atualizar Comentário
+                    </button>
+                    <a href="{% url 'detalhe_post' object.post.pk %}" class="btn btn-secondary">
+                        ↩️ Cancelar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

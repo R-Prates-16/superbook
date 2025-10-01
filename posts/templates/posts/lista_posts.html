@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 <h1 class="mb-3 text-center">Posts</h1>
 
@@ -15,13 +16,17 @@
           <img src="{{ post.autor.imagem.url }}" class="profile-pic" alt="{{ post.autor.codinome }}">
         {% endif %}
         <div>
-          <h5 class="card-title mb-0">{{ post.autor.codinome }}</h5>
+          <h5 class="card-title mb-0">
+            <a href="{% url 'detalhe_post' post.pk %}" class="text-dark text-decoration-none">
+              {{ post.autor.codinome }}
+            </a>
+          </h5>
           <small class="text-muted">{{ post.criado_em|date:"d/m/Y H:i" }}</small>
         </div>
       </div>
       <p class="card-text">{{ post.mensagem|linebreaksbr }}</p>
       <div class="mt-2">
-        <a href="{% url 'detalhes_post' post.pk %}" class="btn btn-sm btn-outline-primary">Ver detalhes</a>
+        <a href="{% url 'detalhe_post' post.pk %}" class="btn btn-sm btn-outline-primary">Ver detalhes</a>
         <a href="{% url 'editar_post' post.pk %}" class="btn btn-sm btn-outline-primary">Editar</a>
         <a href="{% url 'excluir_post' post.pk %}" class="btn btn-sm btn-outline-danger">Excluir</a>
       </div>

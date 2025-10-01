@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/heroes.css' %}">
+
+<div class="villain-theme">
+    <div class="row">
+        <div class="col-md-4">
+            {% if heroi.imagem %}
+            <img src="{{ heroi.imagem.url }}" class="img-fluid villain-profile rounded" alt="{{ heroi.codinome }}">
+            {% else %}
+            <div class="d-flex align-items-center justify-content-center bg-dark text-white rounded" style="height: 300px;">
+                <i class="fas fa-shield-alt fa-5x"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="col-md-8">
+            <h1 class="villain-title">{{ heroi.codinome }}</h1>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <strong>👤 Nome Real:</strong> {{ heroi.nome_real|default:"Identidade secreta" }}
+                </div>
+                <div class="col-md-6">
+                    <strong>🏙️ Cidade:</strong> {{ heroi.cidade }}
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <strong>⚡ Poder Principal:</strong> {{ heroi.poder_principal }}
+            </div>
+
+            <div class="mb-3">
+                <strong>📧 Email de Contato:</strong> {{ heroi.email_contato|default:"Não informado" }}
+            </div>
+
+            <div class="mb-4">
+                <strong>📖 História:</strong>
+                <p class="mt-2">{{ heroi.historia|linebreaks|default:"História não disponível" }}</p>
+            </div>
+
+            <div class="d-flex gap-2">
+                <a href="{% url 'editar_heroi' heroi.pk %}" class="btn villain-btn">
+                    ✏️ Editar Herói
+                </a>
+                <a href="{% url 'excluir_heroi' heroi.pk %}" class="btn btn-outline-danger">
+                    🗑️ Excluir
+                </a>
+                <a href="{% url 'lista_herois' %}" class="btn btn-outline-dark">
+                    ← Voltar para Lista
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

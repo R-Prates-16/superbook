@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/heroes.css' %}">
+
+<div class="villain-theme">
+    <div class="villain-danger">
+        <h1 class="villain-title mb-4">🗑️ Excluir Herói</h1>
+        
+        <div class="alert alert-danger">
+            <h4 class="alert-heading">⚠️ Atenção!</h4>
+            <p>Você está prestes a excluir o herói <strong>"{{ heroi.codinome }}"</strong>. Esta ação não pode ser desfeita.</p>
+            <hr>
+            <p class="mb-0">Tem certeza que deseja continuar?</p>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5>Informações do Herói:</h5>
+                <p><strong>Codinome:</strong> {{ heroi.codinome }}</p>
+                <p><strong>Nome Real:</strong> {{ heroi.nome_real|default:"Identidade secreta" }}</p>
+                <p><strong>Cidade:</strong> {{ heroi.cidade }}</p>
+                <p><strong>Poder Principal:</strong> {{ heroi.poder_principal }}</p>
+            </div>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-danger">
+                    ✅ Sim, Excluir Herói
+                </button>
+                <a href="{% url 'detalhe_heroi' heroi.pk %}" class="btn btn-outline-secondary">
+                    ❌ Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
