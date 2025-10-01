@@ -41,3 +41,5 @@ def excluir_vilao(request, pk):
         messages.success(request, 'Vilão excluído com sucesso!')
         return redirect('lista_viloes')
     return render(request, "villains/excluir_vilao.html", {"vilao": vilao})
+
+# Rian Prates

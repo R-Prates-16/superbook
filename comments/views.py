@@ -42,3 +42,6 @@ class ExcluirComentarioView(LoginRequiredMixin, DeleteView):
     def delete(self, request, *args, **kwargs):
         messages.success(request, 'Comentário excluído com sucesso!')
         return super().delete(request, *args, **kwargs)
+    
+
+# Rian Prates

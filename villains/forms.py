@@ -35,3 +35,5 @@ class VillainForm(forms.ModelForm):
             'nivel_ameaca': 'Nível de Ameaça',
             'imagem': 'Foto do Vilão'
         }
+
+# Rian Prates

@@ -15,3 +15,6 @@ class CommentForm(forms.ModelForm):
         labels = {
             'conteudo': ''
         }
+
+
+# Rian Prates

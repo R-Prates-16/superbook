@@ -80,3 +80,6 @@ def detalhe_post(request, pk):
         'comentarios': comentarios,
         'form': form
     })
+
+
+# Rian Prates

@@ -6,3 +6,5 @@ urlpatterns = [
     path('<int:pk>/editar/', EditarComentarioView.as_view(), name='editar_comment'),
     path('<int:pk>/excluir/', ExcluirComentarioView.as_view(), name='excluir_comment'),
 ]
+
+# Rian Prates

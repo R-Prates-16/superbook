@@ -13,3 +13,5 @@ class Comentario(models.Model):
     
     def __str__(self):
         return f"Comentário de {self.autor.codinome} em {self.post}"
+    
+# Rian Prates
